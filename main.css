@@ -1,0 +1,50 @@
+body {
+  margin-top: 50px;
+  font-family: "Open Sans", "sans-serif";
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(000,124,229,1) 100%) fixed;
+  color: white;
+}
+
+input {
+  background: rgba(0, 0, 255, 0);
+  color: white;
+  border: 1px solid white;
+  font-size: 24px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.centered {
+  margin: 0px auto;
+  text-align: center;
+}
+
+section, .alert {
+  margin-bottom: 10px;
+}
+
+.alert {
+  width: 90%;
+  display: none;
+}
+
+#playground {
+  border: 1px solid white;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 7px;
+  font: 12px sans-serif;
+  background: black;
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  pointer-events: none;
+}

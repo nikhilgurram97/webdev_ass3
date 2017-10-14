@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div><br>
+<p></p>
+
+<script>
+    var $_GET = {};
+    if(document.location.toString().indexOf('?') !== -1) {
+        var query = document.location
+            .toString()
+            // get the query string
+            .replace(/^.*?\?/, '')
+            .replace(/#.*$/, '')
+            .split('&');
+
+        for(var i=0, l=query.length; i<l; i++) {
+            var aux = decodeURIComponent(query[i]).split('=');
+            $_GET[aux[0]] = aux[1];
+        }
+    }
+    //get the 'index' query parameter
+     var a=Number($_GET['lati']);
+     var b=Number($_GET['loni']);
+
+
+    function initMap() {
+        var uluru = {lat: a, lng: b};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+
+
+
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+                if (xmlhttp.status == 200) {
+                    var data = JSON.parse(xmlhttp.responseText);
+                    //access json properties here
+
+                    result.innerText = data.weather[0].description;
+                    temp.innerText = data.main["temp"];
+                    pres.innerText = data.main["pressure"];
+                    hum.innerText = data.main["humidity"];
+                }
+                else if (xmlhttp.status == 400) {
+                    alert('There was an error 400');
+
+                }
+                else {
+                    alert('something else other than 200 was returned');
+                }
+            }
+        };
+        xmlhttp.open("GET", "http://api.openweathermap.org/data/2.5/weather?lat="+a+"&lon="+b+"&appid=8069448e1021474bcbc4ea4385578658", true);
+        xmlhttp.send();
+    }
+</script>
+<br>
+Weather description:<div id="result" style="color:red"></div>
+Temperature:<div id="temp" style="color:red"></div>
+Pressure:<div id="pres" style="color:red"></div>
+Humidity:<div id="hum" style="color:red"></div>
+
+<script async defer
+
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YlpnTu9xgQG4OEY1J6bOavyoUgYS-jc&callback=initMap">
+</script>
+</body>
+</html>

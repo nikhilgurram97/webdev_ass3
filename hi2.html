@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YlpnTu9xgQG4OEY1J6bOavyoUgYS-jc&callback=initMap"></script>
+    <script type="text/javascript" language="JavaScript" src="hi3.js"></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="my-address">
+<button id="getCords" onClick="codeAddress()">submit values</button><br>
+
+<h3>My Google Maps Demo</h3>
+<form action="hi.html" method="get">
+Latitude:<input id="lati"  name="lati" type="text" /><br>
+Longitude:<input id="loni"  name="loni" type="text" /><br>
+    <input type="submit" value="getmap">
+</form>
+</body>
+</html>
